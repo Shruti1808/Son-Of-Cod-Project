@@ -4,7 +4,39 @@
 }
 
 @using System.Security.Claims
+@model IEnumerable<SonOfCod.Models.Contact>
 
-<h2>Here is your list of tasks, @User.Identity.Name</h2>
+<h2>Here is your Mailing list, @User.Identity.Name</h2>
 <hr />
+@if (Model.Any())
+{
+    <ul class="collection">
+        @foreach (var listContact in Model)
+        {
+            <li class="collection-item avatar">
+                <i class="material-icons circle amber lighten-1"> Contact Detail</i>
+                <span class="title">
+                    @Html.DisplayFor(modelContact => listContact.FirstName)</span>
+                <span class="title">
+                    <br />
+                    @Html.DisplayFor(modelContact => listContact.LastName)
+                </span>
+                <br />
+                <p class="valign-center">
+                    <i class="tiny material-icons">email</i>
+                    &nbsp;@listContact.Email
+                </p>
+</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No tasks have been added yet!</p>
+}
+
 @Html.ActionLink("Create new", "Create")
+
+
+
+

@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using SonOfCod.Models;
 using Microsoft.AspNetCore.Identity;
-
-
+using System.Security.Claims;
 
 namespace SonOfCod.Controllers
 {
@@ -23,10 +22,27 @@ namespace SonOfCod.Controllers
             _db = db;
         }
 
-
-        public IActionResult Index()
+        public IActionResult Create()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Contact contact)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+           contact.User = currentUser;
+            _db.Contacts.Add(contact);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public async IActionResult Index()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            return View(_db.Contacts.Where(x => x.User.Id == currentUser.Id));
         }
     }
 }
