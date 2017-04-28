@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using SonOfCod.Models;
+using System.Threading.Tasks;
+using SonOfCod.ViewModels;
 
 namespace SonOfCod.Controllers
 {
@@ -17,6 +19,29 @@ namespace SonOfCod.Controllers
             _signInManager = signInManager;
             _db = db;
         }
+
+        //Register
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            var user = new ApplicationUser { UserName = model.Email };
+            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
 
         public IActionResult Index()
         {

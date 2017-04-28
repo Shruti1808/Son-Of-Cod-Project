@@ -10,10 +10,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using FlickrClone.Models;
+using SonOfCod.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace FlickrClone
+namespace SonOfCod
 {
     public class Startup
     {
