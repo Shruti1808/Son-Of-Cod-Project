@@ -38,7 +38,7 @@ namespace SonOfCod.Controllers
         }
 
 
-        public async IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
