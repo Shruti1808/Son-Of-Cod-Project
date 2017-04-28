@@ -10,27 +10,32 @@
 <hr />
 @if (Model.Any())
 {
-    <ul class="collection">
-        @foreach (var listContact in Model)
-        {
-            <li class="collection-item avatar">
-                <img src="https://s-media-cache-ak0.pinimg.com/736x/02/45/38/0245380e1552c1b4f56f01345005f44a.jpg" alt="" class="circle"
-                <i class="material-icons circle amber lighten-1"> Contact Detail</i>
-                <br />
-                <span class="title">
-                    @Html.DisplayFor(modelContact => listContact.FirstName)</span>
-                <span class="title">
-                    <br />
-                    @Html.DisplayFor(modelContact => listContact.LastName)
-                </span>
-                <br />
-                <p class="valign-center">
-                    <i class="tiny material-icons">email</i>
-                    &nbsp;@listContact.Email
-                </p>
-</li>
-        }
-    </ul>
+    <div class="container">
+        <div class="row">
+            <ul class="listrap">
+                @foreach (var listContact in Model)
+                {
+                    <li class="active">
+                        <img src="https://i1.rgstatic.net/ii/profile.image/AS%3A399028920569873%401472147316819_m/Lisa_Lines.png" alt="" class="img-circle"
+                        <span class="glyphicon glyphicon-user"> Contact Detail</span>
+                        <br />
+                        <span class="title">
+                            @Html.DisplayFor(modelContact => listContact.FirstName)
+                        </span>
+                        <span class="title">
+                            <br />
+                            @Html.DisplayFor(modelContact => listContact.LastName)
+                        </span>
+                        <br />
+                        <p class="align-center">
+                            <span class="glyphicon glyphicon-envelope">email</span>
+                            &nbsp;@listContact.Email
+                        </p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
 }
 else
 {

@@ -22,6 +22,7 @@ namespace SonOfCod.Controllers
             _db = db;
         }
 
+        //Create Contact
         public IActionResult Create()
         {
             return View();
