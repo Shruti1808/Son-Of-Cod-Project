@@ -64,6 +64,7 @@ namespace SonOfCod.Controllers
 
 
         //Logoff
+
         [HttpPost]
         public async Task<IActionResult> LogOff()
         {
