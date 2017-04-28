@@ -6,7 +6,7 @@
 @using System.Security.Claims
 @model IEnumerable<SonOfCod.Models.Contact>
 
-<h2>Here is your Mailing list, @User.Identity.Name</h2>
+<h4>Here is your Mailing list, @User.Identity.Name</h4>
 <hr />
 @if (Model.Any())
 {
@@ -14,7 +14,9 @@
         @foreach (var listContact in Model)
         {
             <li class="collection-item avatar">
+                <img src="https://s-media-cache-ak0.pinimg.com/736x/02/45/38/0245380e1552c1b4f56f01345005f44a.jpg" alt="" class="circle"
                 <i class="material-icons circle amber lighten-1"> Contact Detail</i>
+                <br />
                 <span class="title">
                     @Html.DisplayFor(modelContact => listContact.FirstName)</span>
                 <span class="title">
