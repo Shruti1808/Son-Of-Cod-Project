@@ -63,6 +63,16 @@ namespace SonOfCod.Controllers
         }
 
 
+        //Logoff
+        [HttpPost]
+        public async Task<IActionResult> LogOff()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index");
+        }
+
+
+
         public IActionResult Index()
         {
             return View();
