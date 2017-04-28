@@ -72,8 +72,6 @@ namespace SonOfCod.Controllers
             return RedirectToAction("Index");
         }
 
-
-
         public IActionResult Index()
         {
             return View();
